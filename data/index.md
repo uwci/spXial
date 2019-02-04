@@ -1,7 +1,7 @@
 ## Welcome, GitHub Pages of [spXial.com](spXial.com)
 
-https://github.com/uwci/spXial/edit/master/data/index.md 更新本页
-http://spxial.com/data/  预览更新
+[更新本页](https://github.com/uwci/spXial/edit/master/data/index.md)
+[预览更新](http://spxial.com/data/)
 
 
 |页面|详细|注释|
