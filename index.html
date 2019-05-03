@@ -8,7 +8,21 @@
     <link rel="stylesheet" href="dist20161002/css/stylewithleft.min.css">
   <link rel="stylesheet" href="dist20161002/css/fontello.min.css"> 
 
+<title>点击复制功能</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="clipboard/clipboard.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
+    <style>
+        a:hover{
+            cursor:pointer;
+        }
+    </style>
+	
+	
+	
+	
 </head>
+	
 <body>
     <aside>
         <ul>
@@ -144,8 +158,9 @@
                     
 	            <dd><span><li>videos bed on github：
                     <a href="https://github.com/uwci/m/tree/master/videos" target="_blank" > videos bed</a><br/></li>
-			    
-			    
+			
+		    <span id="copy_myself" data-clipboard-action="copy" data-clipboard-target="#copy_myself">https://uwci.github.io/m/videos/</span>
+
                     
                     </span>THINK INSIDE A NEW BOX</dd>
                     <!-- <dd><span>常用ID:</span> Evica？</dd> -->
@@ -319,4 +334,54 @@
         <p>Theme by <a href="http://www.spxial.com" target="_blank">Evica？</a>. Edited <i class="icon-heart throb" style="color: #d43f57;"></i> by Evica？. 最后更新于二〇一六年十月二日</p>
     </footer>
 </body>
+																	  
+<script type="text/javascript">
+    $(document).ready(function(){
+        var clipboard = new Clipboard('.btn_share');
+        clipboard.on('success', function(e) {
+            parent.layer.msg("复制成功!", {
+                icon : 1,
+                time : 1500
+            })
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var clipboard = new Clipboard('#copybtn');
+        clipboard.on('success', function(e) {
+            parent.layer.msg("复制成功!", {
+                icon : 1,
+                time : 1500
+            })
+        });
+        clipboard.on('error', function(e) {
+            parent.layer.msg("复制失败，请手动复制!", {
+                icon : 2,
+                time : 1500
+            })
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var clipboard = new Clipboard('#copy_myself');
+        clipboard.on('success', function(e) {
+            parent.layer.msg("复制成功!", {
+                icon : 1,
+                time : 1500
+            })
+        });
+        clipboard.on('error', function(e) {
+            parent.layer.msg("复制失败，请手动复制!", {
+                icon : 2,
+                time : 1500
+            })
+        });
+    });
+</script>
+																	  
+																	  
 </html>
