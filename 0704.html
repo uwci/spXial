@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html,body{
+		height:100%;
+	}
+/* 	#demop{
+	position:absolute;
+} */
+	#demop span{
+		position:relative;
+	}
+	</style>
+</head>
+<body>
+	<p id="demop">江南皮革厂！江南皮革厂倒闭了！王八蛋黄鹤欠了我们3.5个亿，跟着他的小姨子跑了。</p>
+	<script>
+	var reset=null;		/*复位用的计时器变量*/
+	
+ 
+	var locations={		/*记录当前鼠标的位置信息*/
+		left:0,
+		top:0
+	};
+	var localArr=[];     /*记录一段时间内鼠标移动的位置，长度为文字的个数*/
+	var arrLength=0;	 /*一段时间内鼠标移动位置的个数*/
+ 
+	class init{			 /*初始化段落文字，将其分割并封装在<span></span>中*/
+		constructor(node){
+			var arr=node.innerHTML.split("");
+			arrLength=arr.length;
+			
+			for(var i=0;i<arrLength;i++){
+				localArr.push({left:0,top:0});
+			}
+ 
+			arr=arr.map(function(value){
+				/*return value="<span>"+value+"</span>";*/
+				return value=`<span>${value}</span>`;
+			});
+			//console.log(arr);
+			node.innerHTML=arr.join("");
+		}
+	}
+ 
+	var demop=document.getElementById("demop");
+	new init(demop);
+	var aSpan=demop.children;
+ 
+	function pMove(lt){			/*当鼠标移动时，触发的文字渲染方法*/
+		localArr.unshift(lt);
+		//console.log(localArr);
+		[].forEach.call(aSpan,function(value,index,item){
+			value.style.left=localArr[index].left+"px";
+			value.style.top=localArr[index].top+"px";
+			value.style.transition="0s 0s";
+		});
+		
+		(localArr.length>aSpan.length)&&(localArr.pop());
+	}
+ 
+	document.body.addEventListener("mousemove",function(e){			/*获取鼠标当前的位置*/
+		clearTimeout(reset);
+		locations={
+			left:e.clientX,
+			top:e.clientY
+		};
+		pMove(locations);
+		reset=setTimeout(function(){			/*当鼠标停止时间超过0.5秒时，触发的事件*/
+			for(var i=0;i<arrLength;i++){
+				localArr[i]=locations;
+			}
+			//console.log(localArr);
+			[].forEach.call(aSpan,function(value,index,item){
+				value.style.left=localArr[index].left+"px";
+				value.style.top=localArr[index].top+"px";
+				value.style.transition=".2s "+(index*0.03)+"s";
+			});
+		},500);
+	});
+ 
+	</script>
+</body>
+<!--
+--------------------- 
+作者：霜月枫桥 
+来源：CSDN 
+原文：https://blog.csdn.net/MOONCOM/article/details/78541375 
+版权声明：本文为博主原创文章，转载请附上博文链接！-->
+</html>
