@@ -1,0 +1,566 @@
+<div id="footerContainer">
+	{{$userId := $.blogInfo.UserId}}
+	<div class="container" id="footer">
+	
+	
+        <div class="col-md-4">
+            <img src="https://uwci.github.io/m/documents/qrcode_for_gh_1e8d80047068_258.jpg" width="200px" />
+                
+        </div>
+        <!--https://uwci.github.io/m/documents/qrcode_for_gh_1e8d80047068_258.jpg 为什么这个地方的输入会有一个r字母的出现，为什么这个地方的githubusercontent的图片无法访问-->
+        
+        
+        <div class="col-md-4">
+        
+          <h3>选项卡</h3>
+          <ul>
+          	<li><a href="{{$.indexUrl}}/tags">分类标签</a></li>
+          	
+          	
+          	{{range $.cates}}
+			<li>
+				<a href="{{$.cateUrl}}/{{.UrlTitle}}">{{.Title}}</a>
+			</li>
+			{{end}}
+			
+			<!-- 单页 -->
+			{{range $.singles}}
+			    <li class="{{if eq $.curSingleId .SingleId}}active{{end}}">
+					<a href="{{$.singleUrl}}/{{.UrlTitle}}">{{.Title}}</a>
+				</li>
+			{{end}}
+			
+			
+			
+			<li>
+ <form class="navbar-form navbar-right" id="search" onsubmit="search(event);return false;">
+	      	<div class="input-group">
+			  	<span class="input-group-addon" id="searchIcon" onclick="search(event);"><i class="fa fa-search"></i></span>
+		        <input type="text" placeholder="Here？" id="searchInput" class="form-control" value="{{.keywords}}">
+		  	</div>
+	      </form>
+	      
+	      
+	      </li>
+	      
+	      			
+			<li>
+
+	      
+	      </li>
+	      
+	      
+	      
+			
+			<!-- 归档
+			
+			<li class="{{if $.curIsArchive}}active{{end}}">
+				<a href="{{$.archiveUrl}}">页面清单</a>
+			</li>
+			<li class="{{if $.curIsTags}}active{{end}}">
+				<a href="{{$.tagsUrl}}">分类标签</a>
+			</li>
+			
+			-->
+</ul>
+
+
+       <!--   <a target="_blank" href="http://spxial-com.mikecrm.com/iMS3ozo" style="position:fixed;z-index:999;right:1px;bottom: 20px;display: inline-block;width: 20px;border-radius: 5px;color:white;font-size:14px;line-height:17px;background: #2476CE;box-shadow: 0 0 5px #666;word-wrap: break-word;padding: 10px 3px;border: 1px solid white;">提交作业</a>
+       
+       
+       <a target="_blank" href="http://spxial-com.mikecrm.com/iMS3ozo" style="position:fixed;z-index:999;right:200px;bottom: 200px;width: 20px;word-wrap: break-word;">提交作业</a>
+
+       -->
+      
+            <!--这里是胡乱插入的一个东西
+            
+             </br>
+        <a target="_blank" href="http://jyzy.luan.gov.cn/index.php?r=center/person/index" style="position:fixed;z-index:-1;right:11px;bottom:30px;display: inline-block;width: 20px;border-radius: 5px;color:white;font-size:14px;line-height:27px;background: #2476CE;box-shadow: 0 0 5px #444;word-wrap: break-word;padding: 10px 3px;border: 1px solid white;">六安平台</a>
+        
+            -->
+            
+        </div>
+        
+         
+         
+        <div class="col-md-4">
+      
+          <!-- 单页
+          <h3>最近</h3>
+          <ul>
+          	{{range .recentPosts}}
+          	<li title="{{.Title}}"><a href="{{$.postUrl}}/{{.UrlTitle}}">
+          	    {{if .Title}}
+          	        {{.Title}}
+          	    {{else}}
+          	        Untitled
+          	    {{end}}
+          	    </a></li>
+          	{{end}}
+          </ul>
+          -->
+
+       
+          
+       </div>
+       
+       
+       
+        <div class="col-md-4">
+          <h3>备注：</h3>
+          <ul>
+          	{{if $.themeInfo.FriendLinks}}
+          		{{range $.themeInfo.FriendLinks}}
+					<li><a href="{{.Url}}" target="_blank">{{.Title}}</a></li>
+          		{{end}}
+          	{{end}}
+		 </ul>
+        </div>
+        
+        
+        
+
+        
+    </div>
+</div>
+
+<!--
+-->
+
+<!--<div class="footer-leanote">翻译本站【失败】 <a href="https://translate.google.com/#view=home&op=translate&sl=auto&tl=zh-CN&text={{$.postUrl}}/{{$.prePost.UrlTitle}}">Google翻译</a></div>
+-->
+
+<script src="{{$.jQueryUrl}}"></script>
+<script src="{{$.bootstrapJsUrl}}"></script>
+<script src="{{$.siteUrl}}/js/bootstrap-hover-dropdown.js"></script>
+<script>
+// 搜索
+function search(e) {
+	var keywords = $("#searchInput").val();
+	if(!keywords) {
+		location.href = "{{$.searchUrl}}";
+	} else {
+		var tpl = '<form style="display: none" action="{{$.searchUrl}}" method="get">';
+		tpl += '<input name="keywords" value="' + keywords + '" />';
+		tpl += "</form";
+		var $tpl = $(tpl);
+		$('body').append($tpl)
+		$tpl.submit();
+		$tpl.remove(); 
+	}
+}
+</script>
+
+
+<div class="container" id="footer">
+<li><a href="https://1drv.ms/o/s!AmUzkkLV5QDhglAxPZlm79St-IZl" target="_blank">实时课堂@微软【失效】</a>
+			</li>
+<li><a href="https://homenew.console.aliyun.com/" target="_blank">活页夹@阿里云【失效】</a>
+			</li>
+			
+</div>
+
+<div class="container" id="footer">
+	<li><a href="https://homenew.console.aliyun.com/" target="_blank">活页夹@阿里云【失效】</a>
+			</li>
+			
+</div>
+<!-- id=footer的格式里的宽度短一点，如何设计宽度为阶梯 -->
+
+
+<div class="container" id="footerBig">
+    <ul class="nav navbar-nav">
+	<li><a href="https://homenew.console.aliyun.com/" target="_blank">活页夹@阿里云【失效】</a></li>
+    <li><a href="https://cn.bing.com/search?q=HTTP+ERROR+500&PC=U316&FORM=CHROMN" target="_blank">leanote500错误哦</a></li>	
+			
+	<!-- 页面真正的部分在于 header 与footer，以及style.css -->	
+			
+			
+			
+			
+			
+			
+	</ul>
+			
+			
+</div>
+
+
+<div class="container">
+<!--
+<div class="navbar-collapse collapse">
+-->
+<ul class="nav navbar-nav">
+    <li><a href="https://1drv.ms/o/s!AmUzkkLV5QDhglAxPZlm79St-IZl" target="_blank">实时课堂@微软【失效】</a>
+	    </li>
+    <li><a href="https://homenew.console.aliyun.com/" target="_blank">活页夹@阿里云【失效】</a>
+	    </li>
+    </ul>
+			
+<ul class="nav navbar-nav"> 	<!-- 分类标签 -->
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/%E5%88%86%E7%B1%BB%E6%96%B0%E9%97%BB" target=_blank>分类新闻</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="https://pro.leanote.com/space/5f844c3e7dc3f97345ba3087" target=_blank>剪贴板</a> </li>
+
+<br/> </ul> </div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+<!--
+<div class="navbar-collapse collapse">
+-->
+<ul class="nav navbar-nav">
+    <li><a href="https://1drv.ms/o/s!AmUzkkLV5QDhglAxPZlm79St-IZl" target="_blank">实时课堂@微软【失效】</a>
+	    </li>
+    <li><a href="https://homenew.console.aliyun.com/" target="_blank">活页夹@阿里云【失效】</a>
+	    </li>
+    </ul>
+			
+<ul class="nav navbar-nav"> 	<!-- 分类标签 -->
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/%E5%88%86%E7%B1%BB%E6%96%B0%E9%97%BB" target=_blank>分类新闻</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="https://pro.leanote.com/space/5f844c3e7dc3f97345ba3087" target=_blank>剪贴板</a> </li>
+
+<br/> </ul>
+
+    
+    
+    
+<ul class="nav navbar-nav"> 	<!-- 分类标签 -->
+    <li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+    <li><a href="http://evica.leanote.com/post/%E5%88%86%E7%B1%BB%E6%96%B0%E9%97%BB" target=_blank>分类新闻</a> </li>
+
+    <li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="http://evica.leanote.com/post/a8b4cb2f9dca" target=_blank>分类笔记</a> </li>
+<li><a href="https://pro.leanote.com/space/5f844c3e7dc3f97345ba3087" target=_blank>剪贴板</a> </li>
+
+<br/> </ul>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+	     <ul class="nav navbar-nav" > 	
+
+	      <li  ><a href="https://bp.pep.com.cn/jc/" target="_blank">教材</a></li>
+	      
+	      <li><a href="https://bp.pep.com.cn/ebook/ywyinjxc/mobile/index.html" target="_blank">1bYW</a></li>
+	    	      <li><a href="https://bp.pep.com.cn/ebook/jcywyinjxc/mobile/index.html" target="_blank">1bYWJC</a></li>
+	    	      <li><a href="https://bihua.51240.com/" target="_blank">笔画查询</a></li>
+	      <li><a href="https://shimo.im/forms/YHkGc6yjxVggdjd9/fill" target="_blank">1b作业整理表</a></li>
+	      
+	      <li><a href="https://bp.pep.com.cn/ebook/ddyfzyinjxc/mobile/index.html" target="_blank">1bFZ</a></li>
+	    
+	    	      <li><a href="https://bp.pep.com.cn/ebook/jcddyfzyinjxc/mobile/index.html" target="_blank">1bFZJC</a></li>
+	    	      <li><a href="file:///Users/m/Desktop/%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%AF%AD%E6%96%87/1a%E9%83%A8%E7%BC%96%E7%89%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%AF%AD%E6%96%87%E4%B8%8A%E5%86%8C%E7%94%B5%E5%AD%90%E8%AF%BE%E6%9C%AC.pdf" target="_blank">1aYW</a></li>
+
+
+	      <li><a href="https://www.bilibili.com/video/av34464551?p=57" target="_blank">拼音动程图</a></li>
+	      <li><a href="https://www.bilibili.com/video/av57562937" target="_blank">1b通解</a></li>
+
+<br/>
+	      </ul>	
+
+
+
+
+<ul class="nav navbar-nav">
+  <li><a href="https://pro.leanote.com/pe/5f27c01d7dc3f97345b6cbf9" target="_blank">- 班主任记录 </a></li>
+
+<li><a href="https://pro.leanote.com/pe/5f27c0257dc3f97345b6cbff" target="_blank">- 备课记录 </a></li>
+<li><a href="https://pro.leanote.com/pe/5f27c02f7dc3f97345b6cc0c" target="_blank">- 听课记录 </a></li>
+<li><a href="https://pro.leanote.com/pe/5f27c0407dc3f97345b6cc19" target="_blank">- 批改记录 </a></li>
+	      <li><a href="https://bp.pep.com.cn/jc/" target="_blank">教材</a></li>
+	      
+	      <li><a href="https://bp.pep.com.cn/ebook/yypepsannjxc/mobile/index.html" target="_blank">3bYW</a></li>
+	    
+	    	      <li><a href="https://bp.pep.com.cn/ebook/jcyypepsannjxc/mobile/index.html" target="_blank">3bYWJC</a></li>
+<li><a href="https://space.bilibili.com/7564048?spm_id_from=333.788.b_765f7570696e666f.2" target="_blank">3b书法</a></li>
+
+	    <li><a href="https://www.bilibili.com/video/av49089914" target="_blank">英式发音</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    	    
+	    <li><a href="https://www.bilibili.com/video/av55754942" target="_blank">伦敦腔</a></li>
+	  <a href="https://www.bilibili.com/video/av74031519?p=34" target="_blank">舌位</a>
+	    
+	    <li><a href="https://search.bilibili.com/all?keyword=%E8%8B%B1%E8%AF%AD%E6%95%99%E5%AD%A6%E8%AE%BE%E8%AE%A1">- 英语教学设计</a> </li>
+
+<li><a href="http://www.ahedu.cn/SNS/index.php?app=public&mod=Index&act=index">教育云资源平台</a> 
+</li>
+
+ <li><a href="https://pro.leanote.com/pe/5f2679a77dc3f97345b6c49e" target="_blank"> 2020年8月2日记录 </a>
+</li>
+	    
+<li><a href="https://s.weibo.com/" target="_blank">微博搜索 </a></li>
+<li><a href="https://www.sogou.com/" target="_blank">搜狗搜索引擎 </a></li>
+<li><a href="https://cn.bing.com/" target="_blank">微软 Bing 搜索</a></li>
+<li><a href="http://www.hqjyxx.cn/SortHtml/1/List_6.html" target="_blank">通知公告_霍邱教育信息网 </a></li>
+<li><a href="http://www.huoqiu.gov.cn/public/column/6600221?type=4&action=list" target="_blank"> 霍邱县人民政府教育信息 </a></li>
+
+ <a href="http://www.moe.gov.cn/" target=_blank>国家教育</a>｜
+ <a href="http://jyt.ah.gov.cn/" target=_blank>安徽教育</a> |
+ <a href="http://jyj.luan.gov.cn/" target=_blank>六安教育</a> | 
+ <a href="http://jyt.ah.gov.cn/dept/1984.shtml" target="_blank">霍邱教育【失效】</a>  |
+ <a href="http://www.huoqiu.gov.cn/content/channel/5c345fba1990027fb47f31c6/" target=_blank>霍邱教育乙【失效】</a> | <a href="http://www.ahedu.cn/eschool/index.php?m=School&c=Index&a=index&schoolId=2300000001000646531" target="_blank">ZPS</a> | 你好！今天天气和交通怎样？  | <a href="http://ah.huatu.com/jiaoshi/zhaopin/" target="_blank">安徽教师招考</a> |<a href="http://www.ahedu.cn/SNS/index.php?app=public&mod=Workroom&act=index&uid=37242502" target="_blank"><font size=“8” color="blue">我的教学准备工作</font></a>「<a href="http://www.ahedu.cn/SNS/index.php?app=teachingapp&mod=TeachingMaterial&act=index" target=_blank><font size=“8” color=“red”> 上传素材【教学】</font></a>」「<a href="http://www.ahedu.cn/jgkj/rorgspace/ResearchGroup/activity/list.do?" target="_blank">语文教研组</a> 」 | <a href="https://eng.yidaiyilu.gov.cn/yw.htm" target=_blank>beltRoad </a>  | <a href="https://leanote.com/member/blog/base" target=_blank>修改标题 </a> | <a href="https://leanote.com/member/blog/updateTheme?themeId=5c460d9fab6441132c001547#" target=_blank>修改主题 </a> | <a href="https://www.huxiu.com/moment.html" target=_blank>Moments </a> | <a href="http://www.icourse163.org/channel/3010.htm" target=_blank> 教师培训 </a> | <a href="http://blog.sciencenet.cn/blog.php" target="_blank">科学博客</a> | <a href="https://leanote.com/note/5db094c8ab64413195000924" target="_blank">视频工具</a> | <a href="https://disqus.com/home/forums/spxial/" target=_blank> 查看对话 </a> | <a href="http://evica.leanote.com/post/pdf%E5%B7%A5%E5%85%B7%E3%80%90%E8%AF%B7%E5%8B%BF%E5%88%A0%E9%99%A4%E3%80%91" target="_blank">PDF工具</a>  | <a href="http://jxd.eduyun.cn/cms/jxds/1920ywrj11firstgrade.html" target="_blank">中央教学点【语文】</a>  | <a href="http://blog.leanote.com/search/evica?keywords=%E6%95%99%E5%AD%A6%E8%AE%BE%E8%AE%A1" target="_blank">搜索【教学设计】</a>  | <a href="http://kszx.jyj.wuhu.gov.cn/" target="_blank">芜湖考试中心</a> | <a href="https://lms.lonelyreader.com/course/106/content#/" target=_blank>《学术西班牙语》</a>   |  <a href="https://pro.leanote.com/@evica"  target=_blank> 备课本 </a>  | <br/>
+
+<li><a href="https://leanote.com/note/5f376e342c7ace30bd000001" target="_blank">ios </a></li>
+<li><a href="http://evica.leanote.com/post/Naituw" target="_blank"> Naituw </a></li>
+
+<li><a href="http://ykt.eduyun.cn/" target="_blank">ykt.eduyun.cn 国家中小学网络云平台 </a>
+</li>
+<li><a href="https://pro.leanote.com/pe/5f27be767dc3f97345b6cb0f" target="_blank"> 2020年8月3日记录 </a>
+</li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+	    <li><a href="https://www.bilibili.com/" target="_blank">空白</a></li>
+<li><a href="http://evica.leanote.com/" target=_blank>spXial.com</a> </li>
+<li><a href="https://pro.leanote.com/pe/5f6134df7dc3f97345b97d1c" target=_blank>Connecticut</a> </li>
+<li><a href="https://www.zhihu.com/search?type=content&q=%E7%89%B9%E5%B2%97%E6%95%99%E5%B8%88%E8%80%83%E7%A0%94" target=_blank>(6 封私信 / 1 条消息) 特岗教师考研 - 搜索结果 - 知乎</a> </li>
+<li><a href="https://www.bilibili.com/" target=_blank>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a> </li>
+<li><a href="https://www.zhihu.com/search?type=content&q=%E7%89%B9%E5%B2%97%E6%95%99%E5%B8%88%20%E8%80%83%E7%A0%94" target=_blank>(6 封私信 / 1 条消息) 特岗教师 考研 - 搜索结果 - 知乎</a> </li>
+<li><a href="https://zhuanlan.zhihu.com/p/231894399" target=_blank>从特岗教师到考上研究生，我纠结了什么？ - 知乎</a> </li>
+<li><a href="https://www.sogou.com/web?query=%E5%90%88%E8%82%A5%E5%AD%A6%E9%99%A2%E7%A0%94%E7%A9%B6%E7%94%9F&_asf=www.sogou.com&_ast=&w=01019900&p=40040100&ie=utf8&from=index-nologin&s_from=index&sut=2955&sst0=1600180044364&lkt=0%2C0%2C0&sugsuv=004DEE0E70200B1C5D36B98A3D2C6908&sugtime=1600180044364" target=_blank>合肥学院研究生 - 搜狗搜索</a> </li>
+<li><a href="http://www.hfuu.edu.cn/yjs/" target=_blank>研究生处</a> </li>
+<li><a href="https://www.zhihu.com/search?type=content&q=%E6%97%A9%E9%A5%AD%E5%90%83%E4%BB%80%E4%B9%88" target=_blank>(6 封私信 / 2 条消息) 早饭吃什么 - 搜索结果 - 知乎</a> </li>
+<li><a href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83%E4%BC%9A&utm_content=search_hot&utm_medium=organic&utm_source=zhihu&type=content" target=_blank>(6 封私信 / 2 条消息) 苹果发布会 - 搜索结果 - 知乎</a> </li>
+<li><a href="https://yz.chsi.com.cn/zyk/" target=_blank>专业知识库_中国研究生招生信息网</a> </li>
+<li><a href="https://yz.chsi.com.cn/zsml/queryAction.do" target=_blank>硕士专业目录_中国研究生招生信息网</a> </li>
+<li><a href="https://yz.chsi.com.cn/zsml/querySchAction.do?ssdm=34&dwmc=%E6%B7%AE%E5%8C%97%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6&mldm=07&mlmc=&yjxkdm=0701&xxfs=&zymc=" target=_blank>硕士专业目录_中国研究生招生信息网</a> </li>
+<li><a href="https://yz.chsi.com.cn/zsml/kskm.jsp?id=1037321003070101011" target=_blank>硕士专业目录_中国研究生招生信息网</a> </li>
+<li><a href="http://www.chnu.edu.cn/Category_2642/Index.aspx" target=_blank>网站首页-淮北师范大学</a> </li>
+<li><a href="http://www.chnu.edu.cn/Item/147394.aspx" target=_blank>淮北师范大学</a> </li>
+<li><a href="https://weixin.sogou.com/weixin?p=01030402&query=september%206&type=2&ie=utf8" target=_blank>september 6的相关微信公众号文章 – 搜狗微信搜索</a> </li>
+<li><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1600205835&ver=2587&signature=lEQU6*87BAwYKiiOlboPmnqv6hbfJRT3ms9ib7*Pd2QEkc4QOSInOJbkXrz6w6uBSu1xJ5BjjK11Kc782BQKUc2sHF7mEWcc46r-qcZBvYVRyBcfXM*gk1*TM*WtRycB&new=1" target=_blank>云南省疫情动态(2020.9.6) Briefing on Novel Coronavirus Cases in Yunnan</a> </li>
+<li><a href="https://portal.ct.gov/CEQ/Environmental-Monitor/Environmental-Monitor-Archives/September-6-2005" target=_blank>September 6 2005</a> </li>
+<li><a href="http://www.ahedu.cn/SNS/index.php?app=public&mod=Index&act=index" target=_blank>我的首页-微博 - 教育云资源平台</a> </li>
+<li><a href="http://zhxy.hfyz.net/spoc/teacherZone/teacherDetail.action?userId=2134000017006808183" target=_blank>教师详情</a> </li>
+<li><a href="http://zhxy.hfyz.net/spoc/teacherZone/resourceDetail.action?resourceId=572a4c581aa645f38583c93933ce7fac&userId=2134000017006808183&resourceType=LOCAL_WK" target=_blank>教师资源详情</a> </li>
+<li><a href="http://xzc.cn/yfK1HP1XBb" target=_blank>收件家</a> </li>
+<li><a href="http://www.hqjyxx.cn/SortHtml/1/List_2.html" target=_blank>新闻_霍邱教育信息网</a> </li>
+<li><a href="http://spxial.com/home" target=_blank>spXial.com home.html</a> </li>
+	     </ul>
+<br/>
+<ul class="nav navbar-nav">
+
+	     <li><a href="https://bp.pep.com.cn/jc/" target="_blank">教材</a></li>
+	     <li><a href="https://bp.pep.com.cn/ebook/yypepwunjxc/mobile/index.html" target="_blank">5bYW</a></li>
+	     <li><a href="https://bp.pep.com.cn/ebook/jcyypepwunjxc/mobile/index.html" target="_blank">5bYWJC</a></li>
+	     <li><a href="http://211.153.23.37/resource/0406/103/yy.html" target="_blank">5b知识点</a></li>
+</ul>
+ <br/>
+     <ul class="nav navbar-nav">
+        <li><a href="http://ykt.eduyun.cn/" target="_blank">国家云课堂</a></li>
+        <li><a href="http://www.weather.com.cn/radar/" target="_blank">风流场锁屏【屏保】</a></li>
+        <li><a href="http://www.centv.cn/cetv4" target="_blank">CETV4</a></li>
+                <li><a href="http://www.centv.cn/z/347411/" target="_blank">CENTV</a></li>
+                <li><a href="http://www.centv.cn/z/347411/" target="_blank">CENTV</a></li>
+                <li><a href="http://www.centv.cn/z/347411/" target="_blank">CENTV</a></li>
+                <li><a href="http://www.centv.cn/z/347411/" target="_blank">CENTV</a></li>
+                <li><a href="http://www.centv.cn/z/347411/" target="_blank">CENTV</a></li>
+                <li><a href="http://evica.leanote.com/post/%E5%B9%B3%E5%8F%B0" target="_blank">平台</a></li>
+        
+        <li><a href="http://211.153.23.37/resource/0406/301/yw.html" target="_blank">国家探究活动课程</a></li>
+
+	      <li><a href="https://www.bilibili.com/video/av23701129?from=search&seid=6549553769919158870" target="_blank">语文课文朗读</a></li>
+	    
+	   <li><a href="http://www.pep.com.cn/xw/zt/hd/ywsd/sfsd/" target="_blank">示范诵读</a></li>
+	    <li><a href="https://www.bilibili.com/video/av73953534?p=1" target=_blank>1b书法</a></li>
+
+	     </ul>
+	      
+<br/>
+
+
+     <ul class="nav navbar-nav">
+        <li><a href="http://ykt.eduyun.cn/" target="_blank">ncovid-19</a></li>
+        <li><a href="https://www.bilibili.com/video/av90399733?from=search&seid=6520239498804223105" target="_blank">磷酸氯喹</a></li>
+	             <li><a href="https://zhuanlan.zhihu.com/p/58796089" target="_blank">ios</a></li>
+        <li><a href="http://www.lxwc.com.cn/topic-97-1.html" target="_blank">5b读物</a></li>
+
+	   <li><a href="http://www.lxwc.com.cn/post-10958-3-1.html" target="_blank">8岁启蒙</a></li>
+        <li><a href="https://www.xiaoshenxian.net/topic-69-1.html">1bXZ</a></li>
+        <li><a href="https://pan.baidu.com/s/1tpoemAKdomRsWmNDzx_WlQ#list/path=%2Fsharelink3306640228-448385782840423%2F%E3%80%8A%E8%97%8F%E5%9C%A8%E5%9C%B0%E5%9B%BE%E9%87%8C%E7%9A%84%E6%88%90%E8%AF%AD%E3%80%8B%E9%9F%B3%E9%A2%91%E5%85%A8%E9%9B%86ok%2F%E7%AC%AC1%E5%86%8C&parentPath=%2Fsharelink3306640228-448385782840423" target="_blank">1b成语</a></li>
+        <li><a href="http://www.hfjyyun.net.cn/App.Search/index.php?m=Search&c=Index&a=index" target="_blank">合肥云</a></li>
+        <li><a href="https://live.bilibili.com/p/eden/area-tags?parentAreaId=1&areaId=27&visit_id=7r0o22tedro0" target="_blank">B站学习</a></li>
+        <li><a href="https://live.bilibili.com/21842495" target="_blank">3b作业帮</a></li>
+   <li><a href="https://live.bilibili.com/21842541" target=_blank>5bZYB</a></li>
+<li><a href="https://live.bilibili.com/21842439" target=_blank>1bZYB</a></li>
+<li><a href="https://live.bilibili.com/21611957" target=_blank>中国天气</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/59433546" target=_blank>ffmpeg</a></li>
+<li><a href="https://www.bilibili.com/video/av8982239/" target=_blank>数数日语</a></li>
+<li><a href="https://www.bilibili.com/video/av29912224?p=1" target=_blank>数数英语</a></li>
+<li><a href="https://www.bilibili.com/video/av32653501" target=_blank>阿拉伯数字</a></li>
+<li><a href="https://www.bilibili.com/video/av32653501" target=_blank>书写数字</a></li>
+<li><a href="https://www.bilibili.com/video/av24122848" target=_blank>英语音位</a></li>
+<li><a href="http://www.qhfx.edu.cn/" target=_blank>清华大学附属小学英语</a></li>
+<li><a href="https://www.bilibili.com/video/av90514496" target=_blank>1b-U1-L2-小青蛙</a></li>
+<li><a href="http://1s1k.eduyun.cn/portal/redesign/index/index.jsp?t=2&xueduan=1&s=subject.0001&v=3628801957091d6c01572792628b0428&c=011273&sessionKey=E8BjLL957tnjNKEHOdOb" target=_blank>部优</a></li>
+<li><a href="http://www.pep.com.cn/xkzthyd/xiaoyu/jiaoshi/tbjx/tb2/" target=_blank>人教知识点</a></li>
+
+<li><a href="http://xiaoyu.pep.com.cn/tbxx/" target=_blank>人教同步学</a></li>
+
+<li><a href="http://www.pep.com.cn/xe/" target=_blank>人教英语</a></li>
+<li><a href="http://www.pep.com.cn/xe/tbxx/" target=_blank>人教英同步学习语</a></li>
+<li><a href="https://www.zhihu.com/question/29356761/answer/853779213" target=_blank>找书</a></li>
+<li><a href="https://www.zhihu.com/question/372559104/answer/1026630952" target=_blank>找PDF</a></li>
+
+<li><a href="http://ykt.eduyun.cn/" target=_blank>CETV4</a></li>
+<li><a href="https://it365.gitlab.io/zh-cn/link-finder/" target=_blank>页面解析</a></li>
+
+<li><a href="http://www.huoqiu.gov.cn/public/column/6600221?type=4&action=list" target=_blank>霍邱县教育局信息公开</a></li>
+
+<li><a href="https://bp.pep.com.cn/ebook/jcmswunjxc/mobile/index.html" target=_blank>5b美术</a></li>
+<li><a href="http://jyt.ah.gov.cn/" target=_blank>省教育厅</a></li>
+
+<li><a href="https://taira-komori.jpn.org/freesoundcn.html" target=_blank>音效</a></li>
+<li><font color="blue">[]</font><a href="https://bp.pep.com.cn/jc/ywjygjkcjc/xxmsjsys/" target=_blank>https://bp.pep.com.cn/jc/ywjygjkcjc/xxmsjsys/</a>小学美术教师教学用书</li>
+
+<li><a href="https://www.bilibili.com/video/av48657857/?spm_id_from=333.788.videocard.9" target=_blank>好声音</a></li>
+
+ 
+ <li><a href="http://www.huoqiu.gov.cn/xxgk/zzjg/hqxjyj/tzgg/index.html" target=_blank>霍邱教育局3</a></li>
+
+<br/>
+<li><a href="https://news.sina.cn/project/fy2020/yq_province.shtml?country=SCUS0001" target=_blank>美国情况</a></li>
+
+<li><a href="https://www.dogedoge.com/" target=_blank>搜索工具dogedoge</a></li>
+
+<li><a href="https://ncov.dxy.cn/ncovh5/view/pneumonia" target=_blank>丁香园播报</a></li>
+<li><a href="https://ebook.chongbuluo.com/" target=_blank>图书检索虫部落</a></li>
+
+<li><a href="https://www.icourse163.org/search.htm?search=%E5%BE%AA%E8%AF%81%E5%8C%BB%E5%AD%A6#/" target=_blank>起源于流行病学的循证医学</a></li>
+
+<li><a href="https://wiki.mbalib.com/wiki/%E5%BE%AA%E8%AF%81%E5%8C%BB%E5%AD%A6" target=_blank>智库百科循证医学</a></li>
+
+<li><a href="https://www.zhihu.com/question/19966108" target=_blank>知乎循证医学</a></li>
+
+<li><a href="https://wiki.mbalib.com/wiki/%E8%BD%AC%E5%8C%96%E5%8C%BB%E5%AD%A6" target=_blank>转化医学智库百科</a></li>
+
+<li><a href="https://www.zhihu.com/search?type=content&q=%E8%B5%B7%E6%BA%90%E4%BA%8E%E6%B5%81%E8%A1%8C%E7%97%85%E5%AD%A6%E7%9A%84%E5%AD%A6%E7%A7%91" target=_blank>起源于流行病学的学科知乎</a></li>
+
+<li><a href="https://www.icourse163.org/course/SDU-1003408001" target=_blank>循证知识转化</a></li>
+
+<li><a href="https://www.icourse163.org/course/NTU-1207007806" target=_blank>南通循证医学</a></li>
+
+
+<li><a href="https://www.icourse163.org/course/GXZYY-1207419807" target=_blank>广西循证医学</a></li>
+<li><a href="https://www.icourse163.org/search.htm?search=%E5%8C%BB%E5%AD%A6%E8%8B%B1%E8%AF%AD#/" target=_blank>医学英语</a></li>
+
+<li><a href="https://zhuanlan.zhihu.com/p/56511983" target=_blank>热带蚊虫</a></li>
+
+<li><a href="https://zhuanlan.zhihu.com/p/56323259" target=_blank>疟原虫</a></li>
+
+<li><a href="https://zhuanlan.zhihu.com/p/33965371" target=_blank>白蛉sandfly</a></li>
+<li><a href="https://www.who.int/news-room/fact-sheets/detail/trypanosomiasis-human-african-(sleeping-sickness)" target=_blank>Trypanosomiasis</a></li>
+
+<li><a href="https://zhuanlan.zhihu.com/p/29153762" target=_blank>Trypanosome</a></li>
+
+<li><a href="https://zhuanlan.zhihu.com/p/41536941" target=_blank>语音现象</a></li>
+
+<li><a href="https://www.icourse163.org/search.htm?search=%E8%AF%AD%E9%9F%B3%E7%8E%B0%E8%B1%A1#/" target=_blank>语音现象mooc</a></li>
+
+<li><a href="https://www.w3schools.com/css/default.asp" target=_blank>w3c</a></li>
+
+<li><a href="https://greenteapress.com/wp/think-python-2e/" target=_blank>python学习</a></li>
+
+<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_lists4" target=_blank>在线html测试</a></li>
+
+<li><a href="http://evica.leanote.com/post/yu-yi" target=_blank>B站发音</a></li>
+<li><a href="http://evica.leanote.com/post/%E5%BE%B7%E8%AF%AD%E5%AD%97%E6%AF%8D%E6%AD%8C" target=_blank>德语字母歌</a></li>
+
+<li><a href="https://www.pan58.com/" target=_blank>图书馆入口</a></li>
+<li><a href="https://www.phonetizer.com/ui" target=_blank>转为音标</a></li>
+
+<li><a href="http://www.fantiz5.com/ziyuan/" target=_blank>字源网</a></li>
+
+
+<li><a href="https://bp.pep.com.cn/jc/" target=_blank>2020年春季人教版教科书</a> </li>
+<li><a href="http://www.987654.com/tools/sejie.asp" target=_blank>http://www.987654.com/tools/sejie.asp</a> RGB色阶代码查询 代码反向查询颜色</li>
+<li><a href="https://www.clipconverter.cc/2/" target=_blank>https://www.clipconverter.cc/2/</a> YouTube to MP4 & MP3 Converter - ClipConverter.cc</li>
+<li><a href="https://it365.gitlab.io/zh-cn/link-finder/" target=_blank>https://it365.gitlab.io/zh-cn/link-finder/</a> it365链接提取工具</li>
+<li><a href="https://www.mikecrm.com/form.php#/list/" target=_blank>https://www.mikecrm.com/form.php#/list/</a> 表单 | 麦客CRM</li>
+<li><a href="https://wenku.baidu.com/view/c570a2c70c22590102029d71.html" target=_blank>https://wenku.baidu.com/view/c570a2c70c22590102029d71.html</a> [图文]中石化加油站照明设计及灯具标准手册 - 百度文库</li>
+<li><a href="http://evica.leanote.com/post/5b%E6%95%99%E5%AD%A6%E6%8C%87%E5%AF%BC" target=_blank>http://evica.leanote.com/post/5b%E6%95%99%E5%AD%A6%E6%8C%87%E5%AF%BC</a> 5b教学指导</li>
+
+<li><a href="http://evica.leanote.com/post/ZGPS通知通告" target=_blank>http://evica.leanote.com/post/ZGPS通知通告</a> ZGPS通知通告</li>
+
+<li><a href="https://www.cctalk.com/m/program/1556970241336306" target=_blank>https://www.cctalk.com/m/program/1556970241336306</a> 课程-CCtalk</li>
+
+   </ul>
+   
+  
+<ul class="nav navbar-nav">
+<li><a href="http://blog.leanote.com/zgps" target=_blank>周岗小学一（1）班云</a> </li>
+<li><a href="https://jingyan.baidu.com/search?word=excel" target=_blank> excel_百度经验</a></li>
+<li>	<a href="{{$.archiveUrl}}" >历史清单</a><br/></li>	    
+<li>	<a href="https://github.com/uwci/spXial" >GIT云</a><br/></li>	
+<li>	<a href="http://evica.leanote.com/post/周岗小学" >周岗小学</a><br/></li>	
+<li>	<a href="https://app.yinxiang.com/Home.action" >印象笔记</a><br/></li>	
+<li>	<a href="https://note.youdao.com/web/#/file/recent" >有道笔记</a><br/></li>	
+
+
+<li>
+<a href="http://news.ceic.ac.cn/index.html" target="_blank">实时地震</a><br/> <a href="http://www.weather.com.cn/live/" target="_blank">实时雨雪</a></li>
+<li></li><a href="http://www.weather.com.cn/alarm/newalarmlist.shtml" target="_blank">气象警报</a></li>
+  
+<li><a href="http://www.ahedu.cn/SNS/index.php?app=teachingapp&mod=TeachingDesign&act=moreupload&refresh=true&restype=0600&type=4" target="_blank"><font size="7" color="lightgreen">添加课件</font></a>
+  	
+<li><a href="https://yun.baidu.com/disk/home?#/all?vmode=list&path=%2FteachingTechnology" target="_blank">百度网盘</a></li>
+
+<li><font color="blue">[]</font><a href="https://www.bilibili.com/video/av89144265?p=36" target=_blank>https://www.bilibili.com/video/av89144265?p=36</a> Phonics Time 自然拼读 跟读训练 54期（全）_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</li>
+<li><a href="https://www.bilibili.com/video/av83130652/?spm_id_from=333.788.videocard.1" target=_blank>完美语音 连读/弱读/击穿音</a> </li>
+<li><a href="https://tophonetics.com/" target=_blank>toPhonetics</a> </li>
+<li><a href="http://yuer.cbern.com.cn/" target=_blank>科学育儿网</a> </li>
+
+<li><a href="http://www.ipachart.com/" target=_blank>Interactive IPA Chart</a> </li>
+<li><a href="http://evica.leanote.com/post/%E5%9C%A8%E7%BA%BF%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%94%E7%94%A8" target=_blank>在线图像处理应用【收藏】</a> </li>
+
+
+<li><a href="http://evica.leanote.com/post/804e670bc593" target="_blank">*视频解析工具 </a></li>
+<li><a href="http://evica.leanote.com/post/%E5%AF%BB%E6%89%BE%E6%96%B0%E8%81%8C%E4%B8%9A" target="_blank">*寻找新职业 </a></li>
+
+
+
+</ul>
+    
+    
+    
+</div>
+
+
+
+
+
+
+<div class="footer-leanote">Clearly sustained by <a href="http://spXial.com">spXial.com</a></div>
