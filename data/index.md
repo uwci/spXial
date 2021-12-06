@@ -2,7 +2,7 @@
 
 [更新本页](https://github.com/uwci/spXial/edit/master/data/index.md)
 [预览更新](http://spxial.com/data/)
-
+[data/新建页面](https://github.com/uwci/spXial/edit/master/data)
 #提示，使用ctrl shift lclick来打开新的页面
 
 
